@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+	<property>
+		<name>hadoop.security.authentication</name>
+		<value>kerberos</value>
+	</property>
+
+	<property>
+		<name>hadoop.security.authorization</name>
+		<value>true</value>
+	</property>
+
+    <property>
+        <name>fs.file.impl</name>
+        <value>org.apache.hadoop.fs.LocalFileSystem</value>
+        <description>The FileSystem for file: uris.</description>
+    </property>
+    <property>
+        <name>fs.hdfs.impl</name>
+        <value>org.apache.hadoop.hdfs.DistributedFileSystem</value>
+        <description>The FileSystem for hdfs: uris.</description>
+    </property>
+    <property>
+        <name>hadoop.security.group.mapping</name>
+        <value>org.apache.hadoop.security.ACLLdapGroupsMapping</value>
+    </property>
+
+    <property>
+        <name>hadoop.security.group.mapping.ldap.url</name>
+        <value>ldap://10.2.6.103:389 ldap://10.2.6.152:389</value>
+    </property>
+
+    <property>
+        <name>hadoop.security.group.mapping.ldap.base</name>
+        <value>ou=hadoop,ou=auth,dc=dianping,dc=com</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.kerberos.principal</name>
+        <value>hadoop/10.2.6.102@DIANPING.COM</value>
+    </property>
+
+    <property>
+        <name>io.compression.codecs</name>ls
+        <value>org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.SnappyCodec</value>
+    </property>
+</configuration>
