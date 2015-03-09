@@ -3,11 +3,6 @@
 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 <modelVersion>4.0.0</modelVersion>
-<!--<parent>-->
-    <!--<artifactId>nebula-parent</artifactId>-->
-    <!--<groupId>com.dp.nebula</groupId>-->
-    <!--<version>1.0.0</version>-->
-<!--</parent>-->
 
 <groupId>com.yili</groupId>
 <artifactId>batch-transform-tool</artifactId>
@@ -342,43 +337,6 @@ xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLS
                                 <copy todir="${plugin.writer.dir}/${greenplum.writer.name}/"
                                       file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${greenplum.writer.name}/ParamKey.java" />
 
-                                <property name="sftp.writer.name" value="sftpwriter" />
-                                <mkdir dir="${plugin.writer.dir}/${sftp.writer.name}" />
-                                <jar
-                                        jarfile="${plugin.writer.dir}/${sftp.writer.name}/${sftp.writer.name}-0.1.0.jar"
-                                        basedir="${classes.dir}"
-                                        includes="com/yili/wormhole/plugins/**/${sftp.writer.name}/**" />
-                                <copy todir="${plugin.writer.dir}/${sftp.writer.name}/"
-                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${sftp.writer.name}/ParamKey.java" />
-
-                                <property name="mongo.writer.name" value="mongowriter" />
-                                <mkdir dir="${plugin.writer.dir}/${mongo.writer.name}" />
-                                <jar
-                                        jarfile="${plugin.writer.dir}/${mongo.writer.name}/${mongo.writer.name}-0.1.0.jar"
-                                        basedir="${classes.dir}"
-                                        includes="com/yili/wormhole/plugins/**/${mongo.writer.name}/**" />
-                                <copy todir="${plugin.writer.dir}/${mongo.writer.name}/"
-                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${mongo.writer.name}/ParamKey.java" />
-
-                                <property name="memcache.writer.name" value="memcachewriter" />
-                                <mkdir dir="${plugin.writer.dir}/${memcache.writer.name}" />
-                                <jar
-                                        jarfile="${plugin.writer.dir}/${memcache.writer.name}/${memcache.writer.name}-0.1.0.jar"
-                                        basedir="${classes.dir}"
-                                        includes="com/yili/wormhole/plugins/**/${memcache.writer.name}/**" />
-                                <copy todir="${plugin.writer.dir}/${memcache.writer.name}/"
-                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${memcache.writer.name}/ParamKey.java" />
-
-                                <property name="hdfs.reader.name" value="hdfsreader" />
-                                <mkdir dir="${plugin.reader.dir}/${hdfs.reader.name}" />
-                                <jar
-                                        jarfile="${plugin.reader.dir}/${hdfs.reader.name}/${hdfs.reader.name}-0.1.0.jar"
-                                        basedir="${classes.dir}"
-                                        includes="com/yili/wormhole/plugins/**/${hdfs.reader.name}/**" />
-                                <copy todir="${plugin.reader.dir}/${hdfs.reader.name}/"
-                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${hdfs.reader.name}/ParamKey.java" />
-
-
                                 <property name="mysql.reader.name" value="mysqlreader" />
                                 <mkdir dir="${plugin.reader.dir}/${mysql.reader.name}" />
                                 <jar
@@ -397,33 +355,6 @@ xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLS
                                 <copy todir="${plugin.reader.dir}/${greenplum.reader.name}/"
                                       file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${greenplum.reader.name}/ParamKey.java" />
 
-                                <property name="sftp.reader.name" value="sftpreader" />
-                                <mkdir dir="${plugin.reader.dir}/${sftp.reader.name}" />
-                                <jar
-                                        jarfile="${plugin.reader.dir}/${sftp.reader.name}/${sftp.reader.name}-0.1.0.jar"
-                                        basedir="${classes.dir}"
-                                        includes="com/yili/wormhole/plugins/**/${sftp.reader.name}/**" />
-                                <copy todir="${plugin.reader.dir}/${sftp.reader.name}/"
-                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${sftp.reader.name}/ParamKey.java" />
-
-                                <property name="mongo.reader.name" value="mongoreader" />
-                                <mkdir dir="${plugin.reader.dir}/${mongo.reader.name}" />
-                                <jar
-                                        jarfile="${plugin.reader.dir}/${mongo.reader.name}/${mongo.reader.name}-0.1.0.jar"
-                                        basedir="${classes.dir}"
-                                        includes="com/yili/wormhole/plugins/**/${mongo.reader.name}/**" />
-                                <copy todir="${plugin.reader.dir}/${mongo.reader.name}/"
-                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${mongo.reader.name}/ParamKey.java" />
-
-                                <property name="sqlserver.reader.name" value="sqlserverreader" />
-                                <mkdir dir="${plugin.reader.dir}/${sqlserver.reader.name}" />
-                                <jar
-                                        jarfile="${plugin.reader.dir}/${sqlserver.reader.name}/${sqlserver.reader.name}-0.1.0.jar"
-                                        basedir="${classes.dir}"
-                                        includes="com/yili/wormhole/plugins/**/${sqlserver.reader.name}/**" />
-                                <copy todir="${plugin.reader.dir}/${sqlserver.reader.name}/"
-                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${sqlserver.reader.name}/ParamKey.java" />
-
                                 <property name="hive.reader.name" value="hivereader" />
                                 <mkdir dir="${plugin.reader.dir}/${hive.reader.name}" />
                                 <jar
@@ -432,15 +363,6 @@ xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLS
                                         includes="com/yili/wormhole/plugins/**/${hive.reader.name}/**" />
                                 <copy todir="${plugin.reader.dir}/${hive.reader.name}/"
                                       file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${hive.reader.name}/ParamKey.java" />
-
-                                <property name="salesforce.reader.name" value="salesforcereader" />
-                                <mkdir dir="${plugin.reader.dir}/${salesforce.reader.name}" />
-                                <jar
-                                        jarfile="${plugin.reader.dir}/${salesforce.reader.name}/${salesforce.reader.name}-0.1.0.jar"
-                                        basedir="${classes.dir}"
-                                        includes="com/yili/wormhole/plugins/**/${salesforce.reader.name}/**" />
-                                <copy todir="${plugin.reader.dir}/${salesforce.reader.name}/"
-                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${salesforce.reader.name}/ParamKey.java" />
 
                                 <property name="hbase.reader.name" value="hbasereader" />
                                 <mkdir dir="${plugin.reader.dir}/${hbase.reader.name}" />
@@ -468,11 +390,6 @@ xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLS
                                         includes="com/yili/wormhole/plugins/**/${redis.writer.name}/**" />
                                 <copy todir="${plugin.writer.dir}/${redis.writer.name}/"
                                       file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${redis.writer.name}/ParamKey.java" />
-
-
-                                <mkdir dir="${transform.dir}" />
-                                <jar jarfile="${transform.dir}/transformers-0.1.0.jar"
-                                     basedir="${classes.dir}" includes="com/yili/wormhole/transform/impls/**" />
 
                                 <mkdir dir="${lib.dir}" />
                                 <dependencyfilesets prefix="nebula-wormhole." />
