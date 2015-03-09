@@ -1,6 +1,5 @@
 package com.yili.wormhole.common;
 
-
 import com.yili.wormhole.common.interfaces.ILine;
 import com.yili.wormhole.common.interfaces.ILineReceiver;
 import com.yili.wormhole.common.interfaces.ILineSender;
@@ -8,7 +7,7 @@ import com.yili.wormhole.engine.storage.IStorage;
 
 import java.util.List;
 
-public class BufferedLineExchanger implements ILineSender, ILineReceiver {
+public class BufferedLineExchanger implements ILineSender, ILineReceiver{
 
 	static private final int DEFAUTL_BUF_SIZE = 64;
 
@@ -26,12 +25,33 @@ public class BufferedLineExchanger implements ILineSender, ILineReceiver {
 
 	private IStorage storageForRead;
 	
-
+	/**
+	 * Construct a {@link BufferedLineExchanger}.
+	 *
+	 * @param	storageForRead
+	 * 			Storage which {@link IWriter} get data from.
+	 *
+	 * @param	storageForWrite
+	 * 			Storage which {@link IReader} put data to.
+	 *
+	 */
 	public BufferedLineExchanger(IStorage storageForRead, List<IStorage> storageForWrite) {
 		this(storageForRead, storageForWrite, DEFAUTL_BUF_SIZE);
 	}
 
-
+	/**
+	 * Construct a {@link BufferedLineExchanger}.
+	 * 
+	 * @param	storageForRead
+	 * 			Storage which {@link IWriter} get data from.
+	 * 
+	 * @param 	storageForWrite
+	 * 			Storage which {@link IReader} put data to.
+	 * 
+	 * @param	bufSize
+	 * 			Storage buffer size.
+	 * 
+	 */
 	public BufferedLineExchanger(IStorage storageForRead,
 			List<IStorage> storageForWrite, int bufSize) {
 		this.storageForRead = storageForRead;
@@ -40,6 +60,13 @@ public class BufferedLineExchanger implements ILineSender, ILineReceiver {
 		this.readBuf = new ILine[bufSize];
 	}
 
+	/**
+	 * Get next line of data which dumped to data destination.
+	 * 
+	 * @return
+	 * 			next {@link ILine}.
+	 * 
+	 */
 	@Override
 	public ILine receive() {
 		if (readBufIdx == 0) {

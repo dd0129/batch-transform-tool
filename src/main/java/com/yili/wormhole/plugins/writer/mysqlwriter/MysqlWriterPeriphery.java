@@ -98,7 +98,7 @@ public class MysqlWriterPeriphery implements IWriterPeriphery{
 	}
 
 	@Override
-	public void doPost(IParam param, ITargetCounter counter) {
+	public void doPost(IParam param, ITargetCounter counter, int i) {
 		if(!countSql.isEmpty()){
 			try{
 				conn = DBSource.getConnection(MysqlWriter.class, ip, writerID, dbname);

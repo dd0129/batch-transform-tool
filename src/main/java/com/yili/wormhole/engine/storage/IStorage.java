@@ -1,6 +1,5 @@
 package com.yili.wormhole.engine.storage;
 
-
 import com.yili.wormhole.common.interfaces.ILine;
 
 /**

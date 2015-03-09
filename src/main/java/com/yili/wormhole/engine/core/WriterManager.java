@@ -180,7 +180,7 @@ final class WriterManager extends AbstractPluginManager {
 			for (String writerID : writerPoolMap.keySet()) {
 				ExecutorService es = writerPoolMap.get(writerID);
 				es.shutdownNow();
-				terminate(writerID);
+				terminate(writerID, failedIDs.size());
 			}
 			writerPoolMap.clear();
 			return true;
@@ -190,7 +190,7 @@ final class WriterManager extends AbstractPluginManager {
 		for (String writerID : writerPoolMap.keySet()) {
 			ExecutorService es = writerPoolMap.get(writerID);
 			if (es.isTerminated()) {
-				terminate(writerID);
+				terminate(writerID, failedIDs.size());
 				needToRemoveWriterIDList.add(writerID);
 			} else {
 				result = false;
@@ -228,20 +228,34 @@ final class WriterManager extends AbstractPluginManager {
 		return result;
 	}
 
-	private void terminate(String writerID) {
-		IWriterPeriphery writerPeriphery = writerPeripheryMap.get(writerID);
-		if (writerPeriphery == null) {
-			s_logger.error("can not find any writer periphery for " + writerID);
-			return;
-		}
-		IParam jobParams = writerToJobParamsMap.get(writerID);
-		if (jobParams == null) {
-			s_logger.error("can not find any job parameters for " + writerID);
-			return;
-		}
 
-		writerPeriphery.doPost(jobParams, monitorManager);
-	}
+    private void terminate(String writerID,int faildSize) {
+        IWriterPeriphery writerPeriphery = writerPeripheryMap.get(writerID);
+        if (writerPeriphery == null) {
+            s_logger.error("can not find any writer periphery for " + writerID);
+            return;
+        }
+        IParam jobParams = writerToJobParamsMap.get(writerID);
+        if (jobParams == null) {
+            s_logger.error("can not find any job parameters for " + writerID);
+            return;
+        }
+        writerPeriphery.doPost(jobParams, monitorManager, faildSize);
+    }
+//	private void terminate(String writerID) {
+//		IWriterPeriphery writerPeriphery = writerPeripheryMap.get(writerID);
+//		if (writerPeriphery == null) {
+//			s_logger.error("can not find any writer periphery for " + writerID);
+//			return;
+//		}
+//		IParam jobParams = writerToJobParamsMap.get(writerID);
+//		if (jobParams == null) {
+//			s_logger.error("can not find any job parameters for " + writerID);
+//			return;
+//		}
+//
+//		writerPeriphery.doPost(jobParams, monitorManager);
+//	}
 
 	public void rollbackAll() {
 		for (String writerID : writerPeripheryMap.keySet()) {

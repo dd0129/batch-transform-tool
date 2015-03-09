@@ -1,6 +1,7 @@
 package com.yili.wormhole.plugins.writer.hdfswriter;
 
 import com.yili.wormhole.common.AbstractPlugin;
+import com.yili.wormhole.common.WormholeException;
 import com.yili.wormhole.common.interfaces.ILine;
 import com.yili.wormhole.common.interfaces.ILineReceiver;
 import com.yili.wormhole.common.interfaces.ITransformer;
@@ -235,7 +236,7 @@ public class HdfsWriter extends AbstractPlugin implements IWriter {
 					break;
 				} catch (Exception e) {
 					if (times == WRITE_TRY_TIMES)
-						throw new Exception("hdfs write retry " + times + " times, fail!");
+						throw new WormholeException("hdfs write retry " + times + " times, fail!");
 					times++;
 					logger.warn("safe write retry " + times, e);
 					try {
@@ -256,9 +257,10 @@ public class HdfsWriter extends AbstractPlugin implements IWriter {
 					break;
 				} catch (Exception e) {
 					if (times == WRITE_TRY_TIMES)
-						throw new Exception("hdfs write retry " + times + " times, fail!");
+						throw new WormholeException("hdfs write retry " + times + " times, fail!");
 					times++;
 					logger.warn("safe write retry "+ times, e);
+                    logger.warn("current output stream is " + out);
 					try {
 						Thread.sleep(WRITE_SLEEP_TIME);
 					} catch (InterruptedException ite) {

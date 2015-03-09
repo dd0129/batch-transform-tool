@@ -7,19 +7,20 @@ import com.yili.wormhole.common.interfaces.ISourceCounter;
 import com.yili.wormhole.common.interfaces.ITargetCounter;
 import com.yili.wormhole.common.interfaces.IWriterPeriphery;
 import com.yili.wormhole.plugins.common.DFSUtils;
-import com.hadoop.compression.lzo.DistributedLzoIndexer;
 import org.apache.commons.lang.StringUtils;
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.util.Shell.ShellCommandExecutor;
-import org.apache.hadoop.util.ToolRunner;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URI;
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HdfsWriterPeriphery implements IWriterPeriphery {
 
@@ -45,13 +46,19 @@ public class HdfsWriterPeriphery implements IWriterPeriphery {
 
 	private FileSystem fs;
 
+    private static final Configuration lzoIndexConfig;
+    static {
+        lzoIndexConfig = new Configuration();
+        lzoIndexConfig.addResource("lzo-index-site.xml");
+    }
+
 	@Override
 	public void rollback(IParam param) {
 		deleteFilesOnHdfs(this.dir, this.prefixname);
 	}
 
 	@Override
-	public void doPost(IParam param, ITargetCounter counter) {
+	public void doPost(IParam param, ITargetCounter counter, int i) {
 		deleteFilesOnHdfs(this.dir, this.prefixname);
 		// rename temp files, make them visible to hdfs
 		renameFiles();
@@ -173,7 +180,7 @@ public class HdfsWriterPeriphery implements IWriterPeriphery {
 		} while (time < MAX_LZO_CREATION_TRY_TIMES);
 
 		if (time == MAX_LZO_CREATION_TRY_TIMES)
-			throw new IOException("try"+ MAX_LZO_CREATION_TRY_TIMES +" add hdfs partition failed!");
+			throw new WormholeException("try"+ MAX_LZO_CREATION_TRY_TIMES +" add hdfs partition failed!");
 	}
 
 	// private void createHiveTable(IParam param){
@@ -205,13 +212,29 @@ public class HdfsWriterPeriphery implements IWriterPeriphery {
 
 	private void createLzoIndex(final String directory) {
 		int times = 1;
-		boolean idxCreated = false;
+//		boolean idxCreated = false;
 		do {
             logger.info("start to create lzo index file on " + directory
                     + " times: " + times);
             try {
                 logger.info("lzo index directory => " + directory);
-				idxCreated = ToolRunner.run(new DistributedLzoIndexer(), new String[]{directory}) == 0;
+//				idxCreated = ToolRunner.run(lzoIndexConfig, new DistributedLzoIndexer(), new String[]{directory}) == 0;
+                List<String> commands = new ArrayList<String>();
+                commands.add("hadoop");
+                commands.add("jar");
+                commands.add(lzoIndexConfig.get("lzo.index.jar"));
+                commands.add(lzoIndexConfig.get("lzo.index.jar.main"));
+                commands.add(directory);
+
+                ProcessBuilder processBuilder = new ProcessBuilder(commands);
+                Process p = processBuilder.start();
+
+                if (p.waitFor() != 0) {
+                    throw new Exception();
+                } else {
+                    logger.info("create lzo index info is => " + org.apache.commons.io.IOUtils.toString(p.getErrorStream()));
+                    break;
+                }
             } catch (Throwable t) {
                 logger.error(String
                         .format("HdfsWriter doPost stage create index %s failed, start to sleep %d millis sec, %s,%s",
@@ -224,9 +247,9 @@ public class HdfsWriterPeriphery implements IWriterPeriphery {
                     ite.printStackTrace(System.err);
                 }
             }
-        } while (!idxCreated && times++ <= MAX_LZO_CREATION_TRY_TIMES);
+        } while (times++ <= MAX_LZO_CREATION_TRY_TIMES);
 
-		if (!idxCreated) {
+		if (times > MAX_LZO_CREATION_TRY_TIMES) {
             throw new WormholeException(
                     "lzo index creation failed after try "
                             + MAX_LZO_CREATION_TRY_TIMES + " times",

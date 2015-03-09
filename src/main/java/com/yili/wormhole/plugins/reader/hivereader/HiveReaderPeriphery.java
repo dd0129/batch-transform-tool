@@ -252,7 +252,7 @@ public class HiveReaderPeriphery implements IReaderPeriphery {
 	}
 
 	@Override
-	public void doPost(IParam param, ITargetCounter counter) {
+	public void doPost(IParam param, ITargetCounter counter, int i) {
 		if ((mode.equals(HiveReaderMode.READ_FROM_HDFS.getMode()) || mode.equals(HiveReaderMode.READ_FROM_LOCAL.getMode()))
 				&& absolutePath != null) {
 			try {

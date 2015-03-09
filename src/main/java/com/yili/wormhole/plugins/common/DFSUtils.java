@@ -84,15 +84,15 @@ public final class DFSUtils {
 
 	/**
 	 * Get {@link Configuration}.
-	 * 
+	 *
 	 * @param dir
 	 *            directory path in hdfs
-	 * 
+	 *
 	 * @param conf
 	 *            hadoop-site.xml path
-	 * 
+	 *
 	 * @return {@link Configuration}
-	 * 
+	 *
 	 * @throws java.io.IOException
 	 */
 	public static Configuration getConf(String dir, String conf)
@@ -138,7 +138,7 @@ public final class DFSUtils {
             LOGGER.info("hadoop/" + uri.getHost() + "@DIANPING.COM");
 			cfg.set("dfs.namenode.kerberos.principal",
 					"hadoop/" + uri.getHost() + "@DIANPING.COM");
-
+            cfg.set("fs.hdfs.impl","org.apache.hadoop.hdfs.DistributedFileSystem");
 			confs.put(scheme, cfg);
 		}
 		return cfg;
@@ -146,17 +146,17 @@ public final class DFSUtils {
 
 	/**
 	 * Get one handle of {@link FileSystem}.
-	 * 
+	 *
 	 * @param dir
 	 *            directory path in hdfs
-	 * 
+	 *
 	 * @param configure
 	 *            hadoop-site.xml path
-	 * 
+	 *
 	 * @return one handle of {@link FileSystem}.
-	 * 
+	 *
 	 * @throws java.io.IOException
-	 * 
+	 *
 	 * */
 
 	public static FileSystem getFileSystem(String dir, String configure)
@@ -176,16 +176,16 @@ public final class DFSUtils {
 
 	/**
 	 * Delete file specified by path or files in directory specified by path.
-	 * 
+	 *
 	 * @param path
 	 *            {@link Path} in hadoop
-	 * 
+	 *
 	 * @param flag
 	 *            need to do delete recursively
-	 * 
+	 *
 	 * @param isGlob
 	 *            need to use file pattern to match all files.
-	 * 
+	 *
 	 * @throws java.io.IOException
 	 *
 	 * */
