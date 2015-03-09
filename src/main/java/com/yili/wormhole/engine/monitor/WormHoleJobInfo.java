@@ -1,10 +1,12 @@
 package com.yili.wormhole.engine.monitor;
 
-import com.dp.nebula.common.utils.DateHelper;
-
 import java.util.Date;
 
+import com.yili.wormhole.common.utils.DateHelper;
+
 public class WormHoleJobInfo {
+	
+	
 	
 	private String userName;
 	private String dataSource;

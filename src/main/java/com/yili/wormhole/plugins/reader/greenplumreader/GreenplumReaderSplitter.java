@@ -1,10 +1,11 @@
 package com.yili.wormhole.plugins.reader.greenplumreader;
 
-import com.dp.nebula.common.utils.DateHelper;
 import com.yili.wormhole.common.AbstractSplitter;
 import com.yili.wormhole.common.JobStatus;
 import com.yili.wormhole.common.WormholeException;
 import com.yili.wormhole.common.interfaces.IParam;
+import com.yili.wormhole.common.utils.DateHelper;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -129,7 +130,7 @@ public class GreenplumReaderSplitter extends AbstractSplitter{
 				int startInt = 0, endInt = 0;
 				startDate = DateHelper.parse(items[0],DateHelper.DATE_FORMAT_PATTERN_YEAR_MONTH_DAY,null);
 				endDate = DateHelper.parse(items[1],DateHelper.DATE_FORMAT_PATTERN_YEAR_MONTH_DAY,null);
-				if (startDate != null && endDate != null) {
+			    if (startDate != null && endDate != null) {
 					Date day = (Date) startDate.clone();
 					while (day.before(endDate) || day.equals(endDate)) {
 						result.add(DateHelper.format(day,DateHelper.DATE_FORMAT_PATTERN_YEAR_MONTH_DAY));
