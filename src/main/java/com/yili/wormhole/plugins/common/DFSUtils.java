@@ -83,7 +83,7 @@ public final class DFSUtils {
     }
 
 	/**
-	 * Get {@link Configuration}.
+	 * Get {@link org.apache.hadoop.conf.Configuration}.
 	 *
 	 * @param dir
 	 *            directory path in hdfs
@@ -91,7 +91,7 @@ public final class DFSUtils {
 	 * @param conf
 	 *            hadoop-site.xml path
 	 *
-	 * @return {@link Configuration}
+	 * @return {@link org.apache.hadoop.conf.Configuration}
 	 *
 	 * @throws java.io.IOException
 	 */
@@ -145,7 +145,7 @@ public final class DFSUtils {
 	}
 
 	/**
-	 * Get one handle of {@link FileSystem}.
+	 * Get one handle of {@link org.apache.hadoop.fs.FileSystem}.
 	 *
 	 * @param dir
 	 *            directory path in hdfs
@@ -153,7 +153,7 @@ public final class DFSUtils {
 	 * @param configure
 	 *            hadoop-site.xml path
 	 *
-	 * @return one handle of {@link FileSystem}.
+	 * @return one handle of {@link org.apache.hadoop.fs.FileSystem}.
 	 *
 	 * @throws java.io.IOException
 	 *
@@ -178,7 +178,7 @@ public final class DFSUtils {
 	 * Delete file specified by path or files in directory specified by path.
 	 *
 	 * @param path
-	 *            {@link Path} in hadoop
+	 *            {@link org.apache.hadoop.fs.Path} in hadoop
 	 *
 	 * @param flag
 	 *            need to do delete recursively
@@ -201,10 +201,10 @@ public final class DFSUtils {
 	 * Delete file specified by path or files in directory specified by path.
 	 *
 	 * @param dfs
-	 *            handle of {@link FileSystem}
+	 *            handle of {@link org.apache.hadoop.fs.FileSystem}
 	 *
 	 * @param path
-	 *            {@link Path} in hadoop
+	 *            {@link org.apache.hadoop.fs.Path} in hadoop
 	 *
 	 * @param flag
 	 *            need to do delete recursively
@@ -228,12 +228,12 @@ public final class DFSUtils {
 	 * is a directory.
 	 *
 	 * @param srcpath
-	 *            Path in {@link FileSystem}
+	 *            Path in {@link org.apache.hadoop.fs.FileSystem}
 	 *
 	 * @param isGlob
 	 *            need to use file pattern
 	 *
-	 * @return all {@link Path} in srcpath.
+	 * @return all {@link org.apache.hadoop.fs.Path} in srcpath.
 	 * @throws java.io.IOException
 	 *
 	 * */
@@ -261,15 +261,15 @@ public final class DFSUtils {
 	 * is a directory.
 	 *
 	 * @param dfs
-	 *            handle of {@link FileSystem}
+	 *            handle of {@link org.apache.hadoop.fs.FileSystem}
 	 *
 	 * @param srcpath
-	 *            Path in {@link FileSystem}
+	 *            Path in {@link org.apache.hadoop.fs.FileSystem}
 	 *
 	 * @param isGlob
 	 *            need to use file pattern
 	 *
-	 * @return all {@link Path} in srcpath
+	 * @return all {@link org.apache.hadoop.fs.Path} in srcpath
 	 *
 	 * @throws java.io.IOException
 	 *
@@ -296,7 +296,7 @@ public final class DFSUtils {
 	 * Delete file specified by path.
 	 *
 	 * @param path
-	 *            {@link Path} in hadoop
+	 *            {@link org.apache.hadoop.fs.Path} in hadoop
 	 *
 	 * @param flag
 	 *            need to do delete recursively
@@ -312,10 +312,10 @@ public final class DFSUtils {
 	 * Delete file specified by path.
 	 *
 	 * @param dfs
-	 *            handle of {@link FileSystem}
+	 *            handle of {@link org.apache.hadoop.fs.FileSystem}
 	 *
 	 * @param path
-	 *            {@link Path} in hadoop
+	 *            {@link org.apache.hadoop.fs.Path} in hadoop
 	 *
 	 * @param flag
 	 *            need to do delete recursively
@@ -329,13 +329,13 @@ public final class DFSUtils {
 	}
 
 	/**
-	 * Initialize handle of {@link FileSystem}.
+	 * Initialize handle of {@link org.apache.hadoop.fs.FileSystem}.
 	 *
 	 * @param uri
 	 *            URI
 	 *
 	 * @param conf
-	 *            {@link Configuration}
+	 *            {@link org.apache.hadoop.conf.Configuration}
 	 *
 	 * @return an FileSystem instance
 	 */
@@ -367,13 +367,13 @@ public final class DFSUtils {
 	 * Check file type in hdfs.
 	 *
 	 * @param fs
-	 *            handle of {@link FileSystem}
+	 *            handle of {@link org.apache.hadoop.fs.FileSystem}
 	 *
 	 * @param path
-	 *            hdfs {@link Path}
+	 *            hdfs {@link org.apache.hadoop.fs.Path}
 	 *
 	 * @param conf
-	 *            {@link Configuration}
+	 *            {@link org.apache.hadoop.conf.Configuration}
 	 *
 	 * @return {@link HdfsFileType} TXT, TXT_COMP, SEQ
 	 * */

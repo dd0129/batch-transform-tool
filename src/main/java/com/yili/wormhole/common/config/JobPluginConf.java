@@ -1,6 +1,6 @@
 package com.yili.wormhole.common.config;
 
-import com.yili.wormhole.common.interfaces.IParam;
+import com.dp.nebula.wormhole.common.interfaces.IParam;
 
 public class JobPluginConf {
 	

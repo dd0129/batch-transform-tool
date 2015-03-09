@@ -1,6 +1,6 @@
 package com.yili.wormhole.common.utils;
 
-import com.yili.wormhole.engine.monitor.WormHoleJobInfo;
+import com.dp.nebula.wormhole.engine.monitor.WormHoleJobInfo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

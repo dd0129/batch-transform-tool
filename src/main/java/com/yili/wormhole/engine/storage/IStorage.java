@@ -1,6 +1,6 @@
 package com.yili.wormhole.engine.storage;
 
-import com.yili.wormhole.common.interfaces.ILine;
+import com.dp.nebula.wormhole.common.interfaces.ILine;
 
 /**
  * A buffer where {@link IReader} and {@link IWriter} exchange data.

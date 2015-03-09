@@ -13,7 +13,7 @@ public class BufferJson implements OutputBufferInterface {
 	@Override
 	public void put(String key, String value) {
 		try {
-			JSONObject valueJson = new JSONObject(value); 
+			JSONObject valueJson = new JSONObject(value);
 			jsonObject.put(key, valueJson);
 		} catch (Exception e) {
 			try {

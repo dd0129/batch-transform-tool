@@ -1,6 +1,6 @@
 package com.yili.wormhole.common;
 
-import com.yili.wormhole.common.interfaces.IParam;
+import com.dp.nebula.wormhole.common.interfaces.IParam;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

@@ -1,8 +1,8 @@
 package com.yili.wormhole.common;
 
-import com.yili.wormhole.common.interfaces.IParam;
-import com.yili.wormhole.common.interfaces.IPlugin;
-import com.yili.wormhole.common.interfaces.IPluginMonitor;
+import com.dp.nebula.wormhole.common.interfaces.IParam;
+import com.dp.nebula.wormhole.common.interfaces.IPlugin;
+import com.dp.nebula.wormhole.common.interfaces.IPluginMonitor;
 
 import java.util.Map;
 

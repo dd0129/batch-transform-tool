@@ -1,12 +1,12 @@
 package com.yili.wormhole.plugins.reader.hivereader;
 
-import com.yili.wormhole.common.JobStatus;
-import com.yili.wormhole.common.WormholeException;
-import com.yili.wormhole.common.interfaces.IParam;
-import com.yili.wormhole.common.interfaces.IReaderPeriphery;
-import com.yili.wormhole.common.interfaces.ISourceCounter;
-import com.yili.wormhole.common.interfaces.ITargetCounter;
-import com.yili.wormhole.plugins.common.DFSUtils;
+import com.dp.nebula.wormhole.common.JobStatus;
+import com.dp.nebula.wormhole.common.WormholeException;
+import com.dp.nebula.wormhole.common.interfaces.IParam;
+import com.dp.nebula.wormhole.common.interfaces.IReaderPeriphery;
+import com.dp.nebula.wormhole.common.interfaces.ISourceCounter;
+import com.dp.nebula.wormhole.common.interfaces.ITargetCounter;
+import com.dp.nebula.wormhole.plugins.common.DFSUtils;
 import com.google.common.base.Preconditions;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;

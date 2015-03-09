@@ -275,145 +275,228 @@ xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLS
     </dependency>
 </dependencies>
 
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <version>1.6</version>
-            <executions>
-                <execution>
-                    <phase>package</phase>
-                    <configuration>
-                        <target>
-                            <property name="build.base.dir" value="build" />
-                            <property name="classes.dir" value="target/classes" />
-                            <property name="lib.dir" value="${build.base.dir}/lib" />
-                            <property name="hive.security.conf.dir" value="${lib.dir}/conf" />
-                            <property name="conf.dir" value="${build.base.dir}/conf" />
-                            <property name="bin.dir" value="${build.base.dir}/bin" />
-                            <property name="plugin.reader.dir" value="${build.base.dir}/plugins/reader" />
-                            <property name="plugin.writer.dir" value="${build.base.dir}/plugins/writer" />
-                            <property name="transform.dir" value="${build.base.dir}/transformers" />
-                            <property name="release.dir" value="release" />
-                            <property name="src.dir" value="src" />
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <property name="build.base.dir" value="build" />
+                                <property name="classes.dir" value="target/classes" />
+                                <property name="lib.dir" value="${build.base.dir}/lib" />
+                                <property name="hive.security.conf.dir" value="${lib.dir}/conf" />
+                                <property name="conf.dir" value="${build.base.dir}/conf" />
+                                <property name="bin.dir" value="${build.base.dir}/bin" />
+                                <property name="plugin.reader.dir" value="${build.base.dir}/plugins/reader" />
+                                <property name="plugin.writer.dir" value="${build.base.dir}/plugins/writer" />
+                                <property name="transform.dir" value="${build.base.dir}/transformers" />
+                                <property name="release.dir" value="release" />
+                                <property name="src.dir" value="src" />
 
-                            <delete dir="${build.base.dir}" includeEmptyDirs="true" />
-                            <delete dir="${release.dir}" includeEmptyDirs="true" />
-                            <mkdir dir="${build.base.dir}" />
-                            <mkdir dir="${conf.dir}" />
-                            <copy todir="${conf.dir}">
-                                <fileset dir="conf" />
-                            </copy>
-                            <mkdir dir="${bin.dir}" />
-                            <copy todir="${bin.dir}">
-                                <fileset dir="bin" />
-                            </copy>
-                            <chmod file="${bin.dir}/com.yili.wormhole.sh" perm="755" />
+                                <delete dir="${build.base.dir}" includeEmptyDirs="true" />
+                                <delete dir="${release.dir}" includeEmptyDirs="true" />
+                                <mkdir dir="${build.base.dir}" />
+                                <mkdir dir="${conf.dir}" />
+                                <copy todir="${conf.dir}">
+                                    <fileset dir="conf" />
+                                </copy>
+                                <mkdir dir="${bin.dir}" />
+                                <copy todir="${bin.dir}">
+                                    <fileset dir="bin" />
+                                </copy>
+                                <chmod file="${bin.dir}/wormhole.sh" perm="755" />
 
-                            <jar jarfile="${lib.dir}/nebula-com.yili.wormhole-0.1.0.jar" basedir="${classes.dir}"
-                                 excludes="com/dp/nebula/com.yili.wormhole/plugins/reader/**,com/dp/nebula/com.yili.wormhole/plugins/writer/**,com/dp/nebula/com.yili.wormhole/transform/impls/**">
-                            </jar>
+                                <jar jarfile="${lib.dir}/nebula-wormhole-0.1.0.jar" basedir="${classes.dir}"
+                                     excludes="com/yili/wormhole/plugins/reader/**,com/yili/wormhole/plugins/writer/**,com/yili/wormhole/transform/impls/**">
+                                </jar>
 
-                            <property name="hdfs.writer.name" value="hdfswriter" />
-                            <mkdir dir="${plugin.writer.dir}/${hdfs.writer.name}" />
-                            <jar
-                                    jarfile="${plugin.writer.dir}/${hdfs.writer.name}/${hdfs.writer.name}-0.1.0.jar"
-                                    basedir="${classes.dir}"
-                                    includes="com/dp/nebula/com.yili.wormhole/plugins/**/${hdfs.writer.name}/**" />
-                            <copy todir="${plugin.writer.dir}/${hdfs.writer.name}/"
-                                  file="${src.dir}/main/java/com/dp/nebula/com.yili.wormhole/plugins/writer/${hdfs.writer.name}/ParamKey.java" />
+                                <property name="hdfs.writer.name" value="hdfswriter" />
+                                <mkdir dir="${plugin.writer.dir}/${hdfs.writer.name}" />
+                                <jar
+                                        jarfile="${plugin.writer.dir}/${hdfs.writer.name}/${hdfs.writer.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${hdfs.writer.name}/**" />
+                                <copy todir="${plugin.writer.dir}/${hdfs.writer.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${hdfs.writer.name}/ParamKey.java" />
 
-                            <property name="mysql.writer.name" value="mysqlwriter" />
-                            <mkdir dir="${plugin.writer.dir}/${mysql.writer.name}" />
-                            <jar
-                                    jarfile="${plugin.writer.dir}/${mysql.writer.name}/${mysql.writer.name}-0.1.0.jar"
-                                    basedir="${classes.dir}"
-                                    includes="com/dp/nebula/com.yili.wormhole/plugins/**/${mysql.writer.name}/**" />
-                            <copy todir="${plugin.writer.dir}/${mysql.writer.name}/"
-                                  file="${src.dir}/main/java/com/dp/nebula/com.yili.wormhole/plugins/writer/${mysql.writer.name}/ParamKey.java" />
+                                <property name="mysql.writer.name" value="mysqlwriter" />
+                                <mkdir dir="${plugin.writer.dir}/${mysql.writer.name}" />
+                                <jar
+                                        jarfile="${plugin.writer.dir}/${mysql.writer.name}/${mysql.writer.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${mysql.writer.name}/**" />
+                                <copy todir="${plugin.writer.dir}/${mysql.writer.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${mysql.writer.name}/ParamKey.java" />
 
-                            <property name="greenplum.writer.name" value="greenplumwriter" />
-                            <mkdir dir="${plugin.writer.dir}/${greenplum.writer.name}" />
-                            <jar
-                                    jarfile="${plugin.writer.dir}/${greenplum.writer.name}/${greenplum.writer.name}-0.1.0.jar"
-                                    basedir="${classes.dir}"
-                                    includes="com/dp/nebula/com.yili.wormhole/plugins/**/${greenplum.writer.name}/**" />
-                            <copy todir="${plugin.writer.dir}/${greenplum.writer.name}/"
-                                  file="${src.dir}/main/java/com/dp/nebula/com.yili.wormhole/plugins/writer/${greenplum.writer.name}/ParamKey.java" />
+                                <property name="greenplum.writer.name" value="greenplumwriter" />
+                                <mkdir dir="${plugin.writer.dir}/${greenplum.writer.name}" />
+                                <jar
+                                        jarfile="${plugin.writer.dir}/${greenplum.writer.name}/${greenplum.writer.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${greenplum.writer.name}/**" />
+                                <copy todir="${plugin.writer.dir}/${greenplum.writer.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${greenplum.writer.name}/ParamKey.java" />
 
-                            <property name="mysql.reader.name" value="mysqlreader" />
-                            <mkdir dir="${plugin.reader.dir}/${mysql.reader.name}" />
-                            <jar
-                                    jarfile="${plugin.reader.dir}/${mysql.reader.name}/${mysql.reader.name}-0.1.0.jar"
-                                    basedir="${classes.dir}"
-                                    includes="com/dp/nebula/com.yili.wormhole/plugins/**/${mysql.reader.name}/**" />
-                            <copy todir="${plugin.reader.dir}/${mysql.reader.name}/"
-                                  file="${src.dir}/main/java/com/dp/nebula/com.yili.wormhole/plugins/reader/${mysql.reader.name}/ParamKey.java" />
+                                <property name="sftp.writer.name" value="sftpwriter" />
+                                <mkdir dir="${plugin.writer.dir}/${sftp.writer.name}" />
+                                <jar
+                                        jarfile="${plugin.writer.dir}/${sftp.writer.name}/${sftp.writer.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${sftp.writer.name}/**" />
+                                <copy todir="${plugin.writer.dir}/${sftp.writer.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${sftp.writer.name}/ParamKey.java" />
 
-                            <property name="greenplum.reader.name" value="greenplumreader" />
-                            <mkdir dir="${plugin.reader.dir}/${greenplum.reader.name}" />
-                            <jar
-                                    jarfile="${plugin.reader.dir}/${greenplum.reader.name}/${greenplum.reader.name}-0.1.0.jar"
-                                    basedir="${classes.dir}"
-                                    includes="com/dp/nebula/com.yili.wormhole/plugins/**/${greenplum.reader.name}/**" />
-                            <copy todir="${plugin.reader.dir}/${greenplum.reader.name}/"
-                                  file="${src.dir}/main/java/com/dp/nebula/com.yili.wormhole/plugins/reader/${greenplum.reader.name}/ParamKey.java" />
+                                <property name="mongo.writer.name" value="mongowriter" />
+                                <mkdir dir="${plugin.writer.dir}/${mongo.writer.name}" />
+                                <jar
+                                        jarfile="${plugin.writer.dir}/${mongo.writer.name}/${mongo.writer.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${mongo.writer.name}/**" />
+                                <copy todir="${plugin.writer.dir}/${mongo.writer.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${mongo.writer.name}/ParamKey.java" />
 
-                            <property name="hive.reader.name" value="hivereader" />
-                            <mkdir dir="${plugin.reader.dir}/${hive.reader.name}" />
-                            <jar
-                                    jarfile="${plugin.reader.dir}/${hive.reader.name}/${hive.reader.name}-0.1.0.jar"
-                                    basedir="${classes.dir}"
-                                    includes="com/dp/nebula/com.yili.wormhole/plugins/**/${hive.reader.name}/**" />
-                            <copy todir="${plugin.reader.dir}/${hive.reader.name}/"
-                                  file="${src.dir}/main/java/com/dp/nebula/com.yili.wormhole/plugins/reader/${hive.reader.name}/ParamKey.java" />
+                                <property name="memcache.writer.name" value="memcachewriter" />
+                                <mkdir dir="${plugin.writer.dir}/${memcache.writer.name}" />
+                                <jar
+                                        jarfile="${plugin.writer.dir}/${memcache.writer.name}/${memcache.writer.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${memcache.writer.name}/**" />
+                                <copy todir="${plugin.writer.dir}/${memcache.writer.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${memcache.writer.name}/ParamKey.java" />
 
-                            <property name="hbase.reader.name" value="hbasereader" />
-                            <mkdir dir="${plugin.reader.dir}/${hbase.reader.name}" />
-                            <jar
-                                    jarfile="${plugin.reader.dir}/${hbase.reader.name}/${hbase.reader.name}-0.1.0.jar"
-                                    basedir="${classes.dir}"
-                                    includes="com/dp/nebula/com.yili.wormhole/plugins/**/${hbase.reader.name}/**" />
-                            <copy todir="${plugin.reader.dir}/${hbase.reader.name}/"
-                                  file="${src.dir}/main/java/com/dp/nebula/com.yili.wormhole/plugins/reader/${hbase.reader.name}/ParamKey.java" />
+                                <property name="hdfs.reader.name" value="hdfsreader" />
+                                <mkdir dir="${plugin.reader.dir}/${hdfs.reader.name}" />
+                                <jar
+                                        jarfile="${plugin.reader.dir}/${hdfs.reader.name}/${hdfs.reader.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${hdfs.reader.name}/**" />
+                                <copy todir="${plugin.reader.dir}/${hdfs.reader.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${hdfs.reader.name}/ParamKey.java" />
 
-                            <property name="hbase.writer.name" value="hbasewriter" />
-                            <mkdir dir="${plugin.writer.dir}/${hbase.writer.name}" />
-                            <jar
-                                    jarfile="${plugin.writer.dir}/${hbase.writer.name}/${hbase.writer.name}-0.1.0.jar"
-                                    basedir="${classes.dir}"
-                                    includes="com/dp/nebula/com.yili.wormhole/plugins/**/${hbase.writer.name}/**" />
-                            <copy todir="${plugin.writer.dir}/${hbase.writer.name}/"
-                                  file="${src.dir}/main/java/com/dp/nebula/com.yili.wormhole/plugins/writer/${hbase.writer.name}/ParamKey.java" />
 
-                            <mkdir dir="${transform.dir}" />
-                            <jar jarfile="${transform.dir}/transformers-0.1.0.jar"
-                                 basedir="${classes.dir}" includes="com/dp/nebula/com.yili.wormhole/transform/impls/**" />
+                                <property name="mysql.reader.name" value="mysqlreader" />
+                                <mkdir dir="${plugin.reader.dir}/${mysql.reader.name}" />
+                                <jar
+                                        jarfile="${plugin.reader.dir}/${mysql.reader.name}/${mysql.reader.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${mysql.reader.name}/**" />
+                                <copy todir="${plugin.reader.dir}/${mysql.reader.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${mysql.reader.name}/ParamKey.java" />
 
-                            <mkdir dir="${lib.dir}" />
-                            <dependencyfilesets prefix="yili-transform." />
-                            <copy todir="${lib.dir}" flatten="true">
-                                <fileset refid="yili-transform.maven.project.dependencies" />
-                            </copy>
-                            <delete>
-                                <fileset dir="${lib.dir}" includes="**/xercesImpl-2.6.2.jar" />
-                            </delete>
+                                <property name="greenplum.reader.name" value="greenplumreader" />
+                                <mkdir dir="${plugin.reader.dir}/${greenplum.reader.name}" />
+                                <jar
+                                        jarfile="${plugin.reader.dir}/${greenplum.reader.name}/${greenplum.reader.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${greenplum.reader.name}/**" />
+                                <copy todir="${plugin.reader.dir}/${greenplum.reader.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${greenplum.reader.name}/ParamKey.java" />
 
-                            <!--<mkdir dir="${hive.security.conf.dir}" />-->
-                            <!--<copy todir="${hive.security.conf.dir}" file="${conf.dir}/hive-site.xml" />-->
-                            <!--<copy todir="${hive.security.conf.dir}" file="${conf.dir}/core-site.xml" />-->
+                                <property name="sftp.reader.name" value="sftpreader" />
+                                <mkdir dir="${plugin.reader.dir}/${sftp.reader.name}" />
+                                <jar
+                                        jarfile="${plugin.reader.dir}/${sftp.reader.name}/${sftp.reader.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${sftp.reader.name}/**" />
+                                <copy todir="${plugin.reader.dir}/${sftp.reader.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${sftp.reader.name}/ParamKey.java" />
 
-                            <mkdir dir="${release.dir}" />
-                            <tar destfile="${release.dir}/yili-transform.tar" basedir="${build.base.dir}" />
-                        </target>
-                    </configuration>
-                    <goals>
-                        <goal>run</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-    </plugins>
-</build>
+                                <property name="mongo.reader.name" value="mongoreader" />
+                                <mkdir dir="${plugin.reader.dir}/${mongo.reader.name}" />
+                                <jar
+                                        jarfile="${plugin.reader.dir}/${mongo.reader.name}/${mongo.reader.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${mongo.reader.name}/**" />
+                                <copy todir="${plugin.reader.dir}/${mongo.reader.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${mongo.reader.name}/ParamKey.java" />
+
+                                <property name="sqlserver.reader.name" value="sqlserverreader" />
+                                <mkdir dir="${plugin.reader.dir}/${sqlserver.reader.name}" />
+                                <jar
+                                        jarfile="${plugin.reader.dir}/${sqlserver.reader.name}/${sqlserver.reader.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${sqlserver.reader.name}/**" />
+                                <copy todir="${plugin.reader.dir}/${sqlserver.reader.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${sqlserver.reader.name}/ParamKey.java" />
+
+                                <property name="hive.reader.name" value="hivereader" />
+                                <mkdir dir="${plugin.reader.dir}/${hive.reader.name}" />
+                                <jar
+                                        jarfile="${plugin.reader.dir}/${hive.reader.name}/${hive.reader.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${hive.reader.name}/**" />
+                                <copy todir="${plugin.reader.dir}/${hive.reader.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${hive.reader.name}/ParamKey.java" />
+
+                                <property name="salesforce.reader.name" value="salesforcereader" />
+                                <mkdir dir="${plugin.reader.dir}/${salesforce.reader.name}" />
+                                <jar
+                                        jarfile="${plugin.reader.dir}/${salesforce.reader.name}/${salesforce.reader.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${salesforce.reader.name}/**" />
+                                <copy todir="${plugin.reader.dir}/${salesforce.reader.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${salesforce.reader.name}/ParamKey.java" />
+
+                                <property name="hbase.reader.name" value="hbasereader" />
+                                <mkdir dir="${plugin.reader.dir}/${hbase.reader.name}" />
+                                <jar
+                                        jarfile="${plugin.reader.dir}/${hbase.reader.name}/${hbase.reader.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${hbase.reader.name}/**" />
+                                <copy todir="${plugin.reader.dir}/${hbase.reader.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/reader/${hbase.reader.name}/ParamKey.java" />
+
+                                <property name="hbase.writer.name" value="hbasewriter" />
+                                <mkdir dir="${plugin.writer.dir}/${hbase.writer.name}" />
+                                <jar
+                                        jarfile="${plugin.writer.dir}/${hbase.writer.name}/${hbase.writer.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${hbase.writer.name}/**" />
+                                <copy todir="${plugin.writer.dir}/${hbase.writer.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${hbase.writer.name}/ParamKey.java" />
+
+                                <property name="redis.writer.name" value="rediswriter" />
+                                <mkdir dir="${plugin.writer.dir}/${redis.writer.name}" />
+                                <jar
+                                        jarfile="${plugin.writer.dir}/${redis.writer.name}/${redis.writer.name}-0.1.0.jar"
+                                        basedir="${classes.dir}"
+                                        includes="com/yili/wormhole/plugins/**/${redis.writer.name}/**" />
+                                <copy todir="${plugin.writer.dir}/${redis.writer.name}/"
+                                      file="${src.dir}/main/java/com/yili/wormhole/plugins/writer/${redis.writer.name}/ParamKey.java" />
+
+
+                                <mkdir dir="${transform.dir}" />
+                                <jar jarfile="${transform.dir}/transformers-0.1.0.jar"
+                                     basedir="${classes.dir}" includes="com/yili/wormhole/transform/impls/**" />
+
+                                <mkdir dir="${lib.dir}" />
+                                <dependencyfilesets prefix="nebula-wormhole." />
+                                <copy todir="${lib.dir}" flatten="true">
+                                    <fileset refid="nebula-wormhole.maven.project.dependencies" />
+                                </copy>
+                                <delete>
+                                    <fileset dir="${lib.dir}" includes="**/xercesImpl-2.6.2.jar" />
+                                </delete>
+
+                                <!--<mkdir dir="${hive.security.conf.dir}" />-->
+                                <!--<copy todir="${hive.security.conf.dir}" file="${conf.dir}/hive-site.xml" />-->
+                                <!--<copy todir="${hive.security.conf.dir}" file="${conf.dir}/core-site.xml" />-->
+
+                                <mkdir dir="${release.dir}" />
+                                <tar destfile="${release.dir}/nebula-wormhole.tar" basedir="${build.base.dir}" />
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

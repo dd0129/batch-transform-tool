@@ -1,13 +1,13 @@
 package com.yili.wormhole.plugins.reader.mysqlreader;
 
-import com.yili.wormhole.common.AbstractPlugin;
-import com.yili.wormhole.common.JobStatus;
-import com.yili.wormhole.common.WormholeException;
-import com.yili.wormhole.common.interfaces.ILineSender;
-import com.yili.wormhole.common.interfaces.IReader;
-import com.yili.wormhole.plugins.common.DBResultSetSender;
-import com.yili.wormhole.plugins.common.DBSource;
-import com.yili.wormhole.plugins.common.DBUtils;
+import com.dp.nebula.wormhole.common.AbstractPlugin;
+import com.dp.nebula.wormhole.common.JobStatus;
+import com.dp.nebula.wormhole.common.WormholeException;
+import com.dp.nebula.wormhole.common.interfaces.ILineSender;
+import com.dp.nebula.wormhole.common.interfaces.IReader;
+import com.dp.nebula.wormhole.plugins.common.DBResultSetSender;
+import com.dp.nebula.wormhole.plugins.common.DBSource;
+import com.dp.nebula.wormhole.plugins.common.DBUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

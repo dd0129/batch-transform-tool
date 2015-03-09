@@ -1,9 +1,9 @@
 package com.yili.wormhole.plugins.reader.mysqlreader;
 
-import com.yili.wormhole.common.AbstractSplitter;
-import com.yili.wormhole.common.JobStatus;
-import com.yili.wormhole.common.WormholeException;
-import com.yili.wormhole.common.interfaces.IParam;
+import com.dp.nebula.wormhole.common.AbstractSplitter;
+import com.dp.nebula.wormhole.common.JobStatus;
+import com.dp.nebula.wormhole.common.WormholeException;
+import com.dp.nebula.wormhole.common.interfaces.IParam;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

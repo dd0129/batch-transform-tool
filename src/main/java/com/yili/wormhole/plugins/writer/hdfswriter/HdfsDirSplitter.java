@@ -1,8 +1,8 @@
 package com.yili.wormhole.plugins.writer.hdfswriter;
 
-import com.yili.wormhole.common.AbstractSplitter;
-import com.yili.wormhole.common.interfaces.IParam;
-import com.yili.wormhole.plugins.common.DFSUtils;
+import com.dp.nebula.wormhole.common.AbstractSplitter;
+import com.dp.nebula.wormhole.common.interfaces.IParam;
+import com.dp.nebula.wormhole.plugins.common.DFSUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.fs.Path;
 import org.apache.log4j.Logger;

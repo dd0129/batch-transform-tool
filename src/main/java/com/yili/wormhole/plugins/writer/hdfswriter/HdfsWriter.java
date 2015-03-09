@@ -1,13 +1,13 @@
 package com.yili.wormhole.plugins.writer.hdfswriter;
 
-import com.yili.wormhole.common.AbstractPlugin;
-import com.yili.wormhole.common.WormholeException;
-import com.yili.wormhole.common.interfaces.ILine;
-import com.yili.wormhole.common.interfaces.ILineReceiver;
-import com.yili.wormhole.common.interfaces.ITransformer;
-import com.yili.wormhole.common.interfaces.IWriter;
-import com.yili.wormhole.plugins.common.DFSUtils;
-import com.yili.wormhole.transform.common.TransformerFactory;
+import com.dp.nebula.wormhole.common.AbstractPlugin;
+import com.dp.nebula.wormhole.common.WormholeException;
+import com.dp.nebula.wormhole.common.interfaces.ILine;
+import com.dp.nebula.wormhole.common.interfaces.ILineReceiver;
+import com.dp.nebula.wormhole.common.interfaces.ITransformer;
+import com.dp.nebula.wormhole.common.interfaces.IWriter;
+import com.dp.nebula.wormhole.plugins.common.DFSUtils;
+import com.dp.nebula.wormhole.transform.common.TransformerFactory;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataOutputStream;

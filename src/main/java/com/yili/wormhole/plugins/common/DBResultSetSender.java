@@ -1,8 +1,8 @@
 package com.yili.wormhole.plugins.common;
 
-import com.yili.wormhole.common.interfaces.ILine;
-import com.yili.wormhole.common.interfaces.ILineSender;
-import com.yili.wormhole.common.interfaces.IPluginMonitor;
+import com.dp.nebula.wormhole.common.interfaces.ILine;
+import com.dp.nebula.wormhole.common.interfaces.ILineSender;
+import com.dp.nebula.wormhole.common.interfaces.IPluginMonitor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

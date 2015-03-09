@@ -2,11 +2,11 @@ package com.yili.wormhole.engine.core;
 
 import com.dianping.lion.EnvZooKeeperConfig;
 import com.dianping.lion.client.ConfigCache;
-import com.yili.wormhole.common.JobStatus;
-import com.yili.wormhole.common.WormholeException;
-import com.yili.wormhole.common.interfaces.IParam;
-import com.yili.wormhole.engine.config.PluginConfParamKey;
-import com.yili.wormhole.plugins.common.ParamKey;
+import com.dp.nebula.wormhole.common.JobStatus;
+import com.dp.nebula.wormhole.common.WormholeException;
+import com.dp.nebula.wormhole.common.interfaces.IParam;
+import com.dp.nebula.wormhole.engine.config.PluginConfParamKey;
+import com.dp.nebula.wormhole.plugins.common.ParamKey;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -111,7 +111,7 @@ abstract class AbstractPluginManager {
 //		}
         ConfigCache configCache = null;
         String lionProject = System.getenv(LION_PROJECT);
-        String connectProps = StringUtils.lowerCase(param.getValue(ParamKey.connectProps,null));
+        String connectProps = StringUtils.lowerCase(param.getValue(ParamKey.connectProps, null));
         s_logger.info("connectProp :\t"+connectProps);
         if(connectProps != null && lionProject != null){
             try{

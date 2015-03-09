@@ -1,7 +1,7 @@
 package com.yili.wormhole.plugins.reader.hbasereader;
 
-import com.yili.wormhole.common.AbstractSplitter;
-import com.yili.wormhole.common.interfaces.IParam;
+import com.dp.nebula.wormhole.common.AbstractSplitter;
+import com.dp.nebula.wormhole.common.interfaces.IParam;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.hbase.util.Pair;
@@ -63,7 +63,7 @@ public class HBaseReaderSplitter extends AbstractSplitter {
 				if (null != userEndKey
 						&& null != userStartKey
 						&& Bytes.compareTo(userStartKey.getBytes(),
-								userEndKey.getBytes()) > 0) {
+                        userEndKey.getBytes()) > 0) {
 					throw new IllegalArgumentException(String.format(
 							"startkey %s cannot be larger than endkey %s .",
 							userStartKey, userEndKey));
@@ -80,9 +80,9 @@ public class HBaseReaderSplitter extends AbstractSplitter {
 					if (null != userStartKey
 							&& 0 != regionRanges.getFirst()[i].length) {
 						if (Bytes.compareTo(userStartKey.getBytes(),
-								regionRanges.getFirst()[i]) < 0) {
+                                regionRanges.getFirst()[i]) < 0) {
 							thisStartKey = Bytes.toString(regionRanges
-									.getFirst()[i]);
+                                    .getFirst()[i]);
 						} else {
 							thisStartKey = userStartKey;
 						}
@@ -100,9 +100,9 @@ public class HBaseReaderSplitter extends AbstractSplitter {
 					if (null != userEndKey
 							&& 0 != regionRanges.getSecond()[i].length) {
 						if (Bytes.compareTo(userEndKey.getBytes(),
-								regionRanges.getSecond()[i]) > 0) {
+                                regionRanges.getSecond()[i]) > 0) {
 							thisEndKey = Bytes.toString(regionRanges
-									.getSecond()[i]);
+                                    .getSecond()[i]);
 						} else {
 							thisEndKey = userEndKey;
 						}

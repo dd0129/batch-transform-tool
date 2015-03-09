@@ -2,7 +2,7 @@ package com.yili.wormhole.plugins.common;
 
 import com.dianping.avatar.cache.CacheKey;
 import com.dianping.avatar.cache.CacheService;
-import com.yili.wormhole.common.utils.Environment;
+import com.dp.nebula.wormhole.common.utils.Environment;
 import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -1,9 +1,9 @@
 package com.yili.wormhole.common.utils;
 
-import com.yili.wormhole.common.DefaultParam;
-import com.yili.wormhole.common.config.JobConf;
-import com.yili.wormhole.common.config.JobPluginConf;
-import com.yili.wormhole.common.interfaces.IParam;
+import com.dp.nebula.wormhole.common.DefaultParam;
+import com.dp.nebula.wormhole.common.config.JobConf;
+import com.dp.nebula.wormhole.common.config.JobPluginConf;
+import com.dp.nebula.wormhole.common.interfaces.IParam;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.dom4j.Document;

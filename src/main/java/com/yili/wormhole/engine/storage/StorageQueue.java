@@ -1,6 +1,6 @@
 package com.yili.wormhole.engine.storage;
 
-import com.yili.wormhole.common.interfaces.ILine;
+import com.dp.nebula.wormhole.common.interfaces.ILine;
 
 import java.util.concurrent.TimeUnit;
 

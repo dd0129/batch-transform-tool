@@ -23,7 +23,7 @@ public final class StringUtil {
 					" with " + System.getenv(matcher.group(2)));
 			
 			text = StringUtils.replace(text, matcher.group(),
-					StringUtils.defaultString(System.getenv(matcher.group(2)), matcher.group()));
+                    StringUtils.defaultString(System.getenv(matcher.group(2)), matcher.group()));
 		}
 		return text;
 	}

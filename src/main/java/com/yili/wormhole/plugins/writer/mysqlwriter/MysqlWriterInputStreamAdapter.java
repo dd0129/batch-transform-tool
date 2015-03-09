@@ -1,9 +1,9 @@
 package com.yili.wormhole.plugins.writer.mysqlwriter;
 
-import com.yili.wormhole.common.JobStatus;
-import com.yili.wormhole.common.WormholeException;
-import com.yili.wormhole.common.interfaces.ILine;
-import com.yili.wormhole.common.interfaces.ILineReceiver;
+import com.dp.nebula.wormhole.common.JobStatus;
+import com.dp.nebula.wormhole.common.WormholeException;
+import com.dp.nebula.wormhole.common.interfaces.ILine;
+import com.dp.nebula.wormhole.common.interfaces.ILineReceiver;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package com.yili.wormhole.plugins.common;
 
-import com.yili.wormhole.common.interfaces.ILineReceiver;
-import com.yili.wormhole.common.interfaces.IPluginMonitor;
+import com.dp.nebula.wormhole.common.interfaces.ILineReceiver;
+import com.dp.nebula.wormhole.common.interfaces.IPluginMonitor;
 
 import java.sql.SQLException;
 

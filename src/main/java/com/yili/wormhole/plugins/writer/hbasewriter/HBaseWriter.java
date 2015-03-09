@@ -1,12 +1,12 @@
 package com.yili.wormhole.plugins.writer.hbasewriter;
 
-import com.yili.wormhole.common.AbstractPlugin;
-import com.yili.wormhole.common.JobStatus;
-import com.yili.wormhole.common.WormholeException;
-import com.yili.wormhole.common.interfaces.ILine;
-import com.yili.wormhole.common.interfaces.ILineReceiver;
-import com.yili.wormhole.common.interfaces.IWriter;
-import com.yili.wormhole.plugins.common.HBaseClient;
+import com.dp.nebula.wormhole.common.AbstractPlugin;
+import com.dp.nebula.wormhole.common.JobStatus;
+import com.dp.nebula.wormhole.common.WormholeException;
+import com.dp.nebula.wormhole.common.interfaces.ILine;
+import com.dp.nebula.wormhole.common.interfaces.ILineReceiver;
+import com.dp.nebula.wormhole.common.interfaces.IWriter;
+import com.dp.nebula.wormhole.plugins.common.HBaseClient;
 import com.google.common.base.Preconditions;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;

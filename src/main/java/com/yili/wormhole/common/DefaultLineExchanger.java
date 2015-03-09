@@ -1,9 +1,9 @@
 package com.yili.wormhole.common;
 
-import com.yili.wormhole.common.interfaces.ILine;
-import com.yili.wormhole.common.interfaces.ILineReceiver;
-import com.yili.wormhole.common.interfaces.ILineSender;
-import com.yili.wormhole.engine.storage.IStorage;
+import com.dp.nebula.wormhole.common.interfaces.ILine;
+import com.dp.nebula.wormhole.common.interfaces.ILineReceiver;
+import com.dp.nebula.wormhole.common.interfaces.ILineSender;
+import com.dp.nebula.wormhole.engine.storage.IStorage;
 
 public class DefaultLineExchanger implements ILineSender, ILineReceiver{
 

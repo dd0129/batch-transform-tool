@@ -1,20 +1,20 @@
 package com.yili.wormhole.engine.core;
 
-import com.yili.wormhole.common.JobStatus;
-import com.yili.wormhole.common.WormholeException;
-import com.yili.wormhole.common.config.JobConf;
-import com.yili.wormhole.common.config.JobPluginConf;
-import com.yili.wormhole.common.interfaces.IParam;
-import com.yili.wormhole.common.utils.Environment;
-import com.yili.wormhole.common.utils.JobConfGenDriver;
-import com.yili.wormhole.common.utils.JobDBUtil;
-import com.yili.wormhole.common.utils.ParseXMLUtil;
-import com.yili.wormhole.engine.config.EngineConfParamKey;
-import com.yili.wormhole.engine.monitor.FailedInfo;
-import com.yili.wormhole.engine.monitor.MonitorManager;
-import com.yili.wormhole.engine.monitor.WormHoleJobInfo;
-import com.yili.wormhole.engine.storage.StorageConf;
-import com.yili.wormhole.engine.storage.StorageManager;
+import com.dp.nebula.wormhole.common.JobStatus;
+import com.dp.nebula.wormhole.common.WormholeException;
+import com.dp.nebula.wormhole.common.config.JobConf;
+import com.dp.nebula.wormhole.common.config.JobPluginConf;
+import com.dp.nebula.wormhole.common.interfaces.IParam;
+import com.dp.nebula.wormhole.common.utils.Environment;
+import com.dp.nebula.wormhole.common.utils.JobConfGenDriver;
+import com.dp.nebula.wormhole.common.utils.JobDBUtil;
+import com.dp.nebula.wormhole.common.utils.ParseXMLUtil;
+import com.dp.nebula.wormhole.engine.config.EngineConfParamKey;
+import com.dp.nebula.wormhole.engine.monitor.FailedInfo;
+import com.dp.nebula.wormhole.engine.monitor.MonitorManager;
+import com.dp.nebula.wormhole.engine.monitor.WormHoleJobInfo;
+import com.dp.nebula.wormhole.engine.storage.StorageConf;
+import com.dp.nebula.wormhole.engine.storage.StorageManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.PropertyConfigurator;
@@ -28,7 +28,7 @@ public class Engine {
 	private static final Log s_logger = LogFactory.getLog(Engine.class);
 	private static final int STATUS_CHECK_INTERVAL = 1000;
 	private static final int INFO_SHOW_PERIOD = 10;
-	private static final String DEFAULT_STORAGE_CLASS_NAME = "com.dp.nebula.com.yili.wormhole.engine.storage.RAMStorage";
+	private static final String DEFAULT_STORAGE_CLASS_NAME = "com.dp.nebula.wormhole.engine.storage.RAMStorage";
 	private static final int DEFAULT_STORAGE_LINE_LIMIT = 3000;
 	private static final int DEFAULT_STORAGE_BYTE_LIMIT = 1000000;
 	private static final int DEFAULT_STORAGE_DESTRUCT_LIMIT = 1;
@@ -56,7 +56,7 @@ public class Engine {
 		int statusCode = status.getStatus();
 		WriterManager writerManager = null;
 		try {
-			s_logger.info("Nebula com.yili.wormhole Start");
+			s_logger.info("Nebula wormhole Start");
 			// create instance of StoraheManager & MonitorManager
 			List<StorageConf> storageConfList = createStorageConfs(jobConf);
 			if (storageConfList == null || storageConfList.isEmpty()) {
@@ -133,7 +133,7 @@ public class Engine {
 						|| (status.getStatus() >= JobStatus.FAILED.getStatus() && status
 								.getStatus() < JobStatus.WRITE_FAILED
 								.getStatus())) {
-					s_logger.error("Nebula com.yili.wormhole Job is Failed!");
+					s_logger.error("Nebula wormhole Job is Failed!");
 					writerManager.rollbackAll();
 					break;
 				} else if (status == JobStatus.PARTIAL_FAILED
@@ -146,10 +146,10 @@ public class Engine {
 					writerManager.rollback(failedIDs);
 					break;
 				} else if (status == JobStatus.SUCCESS_WITH_ERROR) {
-					s_logger.error("Nebula com.yili.wormhole Job is Completed successfully with a few abnormal data");
+					s_logger.error("Nebula wormhole Job is Completed successfully with a few abnormal data");
 					break;
 				} else if (status == JobStatus.SUCCESS) {
-					s_logger.info("Nebula com.yili.wormhole Job is Completed successfully!");
+					s_logger.info("Nebula wormhole Job is Completed successfully!");
 					break;
 				}
 				// Running
@@ -180,7 +180,7 @@ public class Engine {
 					JobStatus.ROLL_BACK_FAILED)) {
 				s_logger.error("Roll back failed: " + e.getPluginID(), e);
 			} else {
-				s_logger.error("Nebula com.yili.wormhole Job is Failed!", e);
+				s_logger.error("Nebula wormhole Job is Failed!", e);
 				try {
 					writerManager.killAll();
 					writerManager.rollbackAll();
@@ -191,23 +191,23 @@ public class Engine {
 		} catch (InterruptedException e) {
 			status = JobStatus.FAILED;
 			s_logger.error(
-					"Nebula com.yili.wormhole Job is Failed  as it is interrupted when prepare to read or write",
+					"Nebula wormhole Job is Failed  as it is interrupted when prepare to read or write",
 					e);
 		} catch (ExecutionException e) {
 			status = JobStatus.FAILED;
 			s_logger.error(
-					"Nebula com.yili.wormhole Job is Failed  as it is failed when prepare to read or write",
+					"Nebula wormhole Job is Failed  as it is failed when prepare to read or write",
 					e);
 		} catch (TimeoutException e) {
 			status = JobStatus.FAILED;
 			s_logger.error(
-					"Nebula com.yili.wormhole Job is Failed  as it is timeout when prepare to read or write",
+					"Nebula wormhole Job is Failed  as it is timeout when prepare to read or write",
 					e);
 		} catch (Exception e) {
 			if (!status.isFailed()) {
 				status = JobStatus.FAILED;
 			}
-			s_logger.error("Nebula com.yili.wormhole Job is Failed!", e);
+			s_logger.error("Nebula wormhole Job is Failed!", e);
 			s_logger.error("Unknown Exception occurs, will roll back all");
 			try {
 				if (writerManager != null) {
@@ -378,7 +378,7 @@ public class Engine {
 		}
 		// return usage information
 		else {
-			s_logger.error("Usage: ./com.yili.wormhole.sh job.xml .");
+			s_logger.error("Usage: ./wormhole.sh job.xml .");
 			System.exit(JobStatus.FAILED.getStatus());
 		}
 		JobConf jobConf = null;
@@ -398,7 +398,7 @@ public class Engine {
 
 		Engine engine = new Engine(engineConf, pluginConfs);
 		int jobStatus = engine.run(jobConf);
-		s_logger.info("com.yili.wormhole return code-" + jobStatus);
+		s_logger.info("wormhole return code-" + jobStatus);
 		System.exit(jobStatus);
 	}
 }
