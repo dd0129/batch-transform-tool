@@ -1,12 +1,12 @@
 package com.yili.wormhole.plugins.reader.hivereader;
 
-import com.dp.nebula.wormhole.common.AbstractPlugin;
-import com.dp.nebula.wormhole.common.JobStatus;
-import com.dp.nebula.wormhole.common.WormholeException;
-import com.dp.nebula.wormhole.common.interfaces.ILine;
-import com.dp.nebula.wormhole.common.interfaces.ILineSender;
-import com.dp.nebula.wormhole.common.interfaces.IReader;
-import com.dp.nebula.wormhole.plugins.common.DFSUtils;
+import com.yili.wormhole.common.AbstractPlugin;
+import com.yili.wormhole.common.JobStatus;
+import com.yili.wormhole.common.WormholeException;
+import com.yili.wormhole.common.interfaces.ILine;
+import com.yili.wormhole.common.interfaces.ILineSender;
+import com.yili.wormhole.common.interfaces.IReader;
+import com.yili.wormhole.plugins.common.DFSUtils;
 import org.apache.commons.io.LineIterator;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;

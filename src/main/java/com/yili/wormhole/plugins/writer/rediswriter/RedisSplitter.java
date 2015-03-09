@@ -1,7 +1,7 @@
 package com.yili.wormhole.plugins.writer.rediswriter;
 
-import com.dp.nebula.wormhole.common.AbstractSplitter;
-import com.dp.nebula.wormhole.common.interfaces.IParam;
+import com.yili.wormhole.common.AbstractSplitter;
+import com.yili.wormhole.common.interfaces.IParam;
 import com.google.common.base.Preconditions;
 import org.apache.log4j.Logger;
 

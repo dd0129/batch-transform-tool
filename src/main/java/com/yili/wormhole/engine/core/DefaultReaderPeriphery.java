@@ -1,9 +1,9 @@
 package com.yili.wormhole.engine.core;
 
-import com.dp.nebula.wormhole.common.interfaces.IParam;
-import com.dp.nebula.wormhole.common.interfaces.IReaderPeriphery;
-import com.dp.nebula.wormhole.common.interfaces.ISourceCounter;
-import com.dp.nebula.wormhole.common.interfaces.ITargetCounter;
+import com.yili.wormhole.common.interfaces.IParam;
+import com.yili.wormhole.common.interfaces.IReaderPeriphery;
+import com.yili.wormhole.common.interfaces.ISourceCounter;
+import com.yili.wormhole.common.interfaces.ITargetCounter;
 
 class DefaultReaderPeriphery implements IReaderPeriphery{
 

@@ -1,7 +1,7 @@
 package com.yili.wormhole.plugins.common;
 
-import com.dp.nebula.wormhole.common.JobStatus;
-import com.dp.nebula.wormhole.common.WormholeException;
+import com.yili.wormhole.common.JobStatus;
+import com.yili.wormhole.common.WormholeException;
 import org.postgresql.util.PSQLException;
 
 public final class ErrorCodeUtils {

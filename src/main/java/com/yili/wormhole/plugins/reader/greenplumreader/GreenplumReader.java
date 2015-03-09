@@ -1,14 +1,14 @@
 package com.yili.wormhole.plugins.reader.greenplumreader;
 
-import com.dp.nebula.wormhole.common.AbstractPlugin;
-import com.dp.nebula.wormhole.common.DefaultLine;
-import com.dp.nebula.wormhole.common.JobStatus;
-import com.dp.nebula.wormhole.common.WormholeException;
-import com.dp.nebula.wormhole.common.interfaces.ILine;
-import com.dp.nebula.wormhole.common.interfaces.ILineSender;
-import com.dp.nebula.wormhole.common.interfaces.IReader;
-import com.dp.nebula.wormhole.plugins.common.DBSource;
-import com.dp.nebula.wormhole.plugins.common.ErrorCodeUtils;
+import com.yili.wormhole.common.AbstractPlugin;
+import com.yili.wormhole.common.DefaultLine;
+import com.yili.wormhole.common.JobStatus;
+import com.yili.wormhole.common.WormholeException;
+import com.yili.wormhole.common.interfaces.ILine;
+import com.yili.wormhole.common.interfaces.ILineSender;
+import com.yili.wormhole.common.interfaces.IReader;
+import com.yili.wormhole.plugins.common.DBSource;
+import com.yili.wormhole.plugins.common.ErrorCodeUtils;
 import org.apache.commons.dbcp.DelegatingConnection;
 import org.apache.commons.io.LineIterator;
 import org.apache.commons.logging.Log;

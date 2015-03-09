@@ -1,7 +1,7 @@
 package com.yili.wormhole.plugins.common;
 
-//import com.dp.nebula.wormhole.common.WormholeException;
-import com.dp.nebula.wormhole.common.interfaces.IPlugin;
+//import com.yili.wormhole.common.WormholeException;
+import com.yili.wormhole.common.interfaces.IPlugin;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 import org.apache.log4j.Logger;

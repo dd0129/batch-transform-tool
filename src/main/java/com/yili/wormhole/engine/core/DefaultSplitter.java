@@ -1,5 +1,5 @@
 package com.yili.wormhole.engine.core;
 
-import com.dp.nebula.wormhole.common.AbstractSplitter;
+import com.yili.wormhole.common.AbstractSplitter;
 
 class DefaultSplitter extends AbstractSplitter{}

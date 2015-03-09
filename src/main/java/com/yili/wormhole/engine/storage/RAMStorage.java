@@ -1,8 +1,8 @@
 package com.yili.wormhole.engine.storage;
 
-import com.dp.nebula.wormhole.common.JobStatus;
-import com.dp.nebula.wormhole.common.WormholeException;
-import com.dp.nebula.wormhole.common.interfaces.ILine;
+import com.yili.wormhole.common.JobStatus;
+import com.yili.wormhole.common.WormholeException;
+import com.yili.wormhole.common.interfaces.ILine;
 import org.apache.log4j.Logger;
 
 import java.util.concurrent.TimeUnit;

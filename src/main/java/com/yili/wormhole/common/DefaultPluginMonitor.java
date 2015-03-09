@@ -1,6 +1,6 @@
 package com.yili.wormhole.common;
 
-import com.dp.nebula.wormhole.common.interfaces.IPluginMonitor;
+import com.yili.wormhole.common.interfaces.IPluginMonitor;
 
 public class DefaultPluginMonitor implements IPluginMonitor{
 	

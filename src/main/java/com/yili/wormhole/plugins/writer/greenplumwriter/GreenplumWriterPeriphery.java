@@ -1,14 +1,14 @@
 package com.yili.wormhole.plugins.writer.greenplumwriter;
 
-import com.dp.nebula.wormhole.common.AbstractPlugin;
-import com.dp.nebula.wormhole.common.JobStatus;
-import com.dp.nebula.wormhole.common.WormholeException;
-import com.dp.nebula.wormhole.common.interfaces.IParam;
-import com.dp.nebula.wormhole.common.interfaces.ISourceCounter;
-import com.dp.nebula.wormhole.common.interfaces.ITargetCounter;
-import com.dp.nebula.wormhole.common.interfaces.IWriterPeriphery;
-import com.dp.nebula.wormhole.plugins.common.DBSource;
-import com.dp.nebula.wormhole.plugins.common.DBUtils;
+import com.yili.wormhole.common.AbstractPlugin;
+import com.yili.wormhole.common.JobStatus;
+import com.yili.wormhole.common.WormholeException;
+import com.yili.wormhole.common.interfaces.IParam;
+import com.yili.wormhole.common.interfaces.ISourceCounter;
+import com.yili.wormhole.common.interfaces.ITargetCounter;
+import com.yili.wormhole.common.interfaces.IWriterPeriphery;
+import com.yili.wormhole.plugins.common.DBSource;
+import com.yili.wormhole.plugins.common.DBUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

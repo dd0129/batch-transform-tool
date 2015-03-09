@@ -1,10 +1,10 @@
 package com.yili.wormhole.plugins.reader.hivereader;
 
-import com.dp.nebula.wormhole.common.AbstractSplitter;
-import com.dp.nebula.wormhole.common.JobStatus;
-import com.dp.nebula.wormhole.common.WormholeException;
-import com.dp.nebula.wormhole.common.interfaces.IParam;
-import com.dp.nebula.wormhole.plugins.common.DFSUtils;
+import com.yili.wormhole.common.AbstractSplitter;
+import com.yili.wormhole.common.JobStatus;
+import com.yili.wormhole.common.WormholeException;
+import com.yili.wormhole.common.interfaces.IParam;
+import com.yili.wormhole.plugins.common.DFSUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;

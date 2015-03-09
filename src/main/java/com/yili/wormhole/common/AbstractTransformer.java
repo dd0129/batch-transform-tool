@@ -1,7 +1,7 @@
 package com.yili.wormhole.common;
 
-import com.dp.nebula.wormhole.common.interfaces.ILine;
-import com.dp.nebula.wormhole.common.interfaces.ITransformer;
+import com.yili.wormhole.common.interfaces.ILine;
+import com.yili.wormhole.common.interfaces.ITransformer;
 
 public abstract class AbstractTransformer implements ITransformer{
 

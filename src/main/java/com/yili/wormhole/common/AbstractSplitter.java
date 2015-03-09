@@ -1,7 +1,7 @@
 package com.yili.wormhole.common;
 
-import com.dp.nebula.wormhole.common.interfaces.IParam;
-import com.dp.nebula.wormhole.common.interfaces.ISplitter;
+import com.yili.wormhole.common.interfaces.IParam;
+import com.yili.wormhole.common.interfaces.ISplitter;
 
 import java.util.ArrayList;
 import java.util.List;

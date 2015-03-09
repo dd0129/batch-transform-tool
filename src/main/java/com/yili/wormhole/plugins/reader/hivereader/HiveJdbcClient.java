@@ -1,10 +1,10 @@
 package com.yili.wormhole.plugins.reader.hivereader;
 
-import com.dp.nebula.wormhole.common.JobStatus;
-import com.dp.nebula.wormhole.common.WormholeException;
-import com.dp.nebula.wormhole.common.interfaces.ILine;
-import com.dp.nebula.wormhole.common.interfaces.ILineSender;
-import com.dp.nebula.wormhole.common.interfaces.IPluginMonitor;
+import com.yili.wormhole.common.JobStatus;
+import com.yili.wormhole.common.WormholeException;
+import com.yili.wormhole.common.interfaces.ILine;
+import com.yili.wormhole.common.interfaces.ILineSender;
+import com.yili.wormhole.common.interfaces.IPluginMonitor;
 import org.apache.log4j.Logger;
 
 import java.sql.*;

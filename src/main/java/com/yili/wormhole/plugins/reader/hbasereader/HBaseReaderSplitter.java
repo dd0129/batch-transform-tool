@@ -1,7 +1,7 @@
 package com.yili.wormhole.plugins.reader.hbasereader;
 
-import com.dp.nebula.wormhole.common.AbstractSplitter;
-import com.dp.nebula.wormhole.common.interfaces.IParam;
+import com.yili.wormhole.common.AbstractSplitter;
+import com.yili.wormhole.common.interfaces.IParam;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.hbase.util.Pair;

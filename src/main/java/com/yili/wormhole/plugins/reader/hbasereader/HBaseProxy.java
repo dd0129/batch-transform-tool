@@ -1,6 +1,6 @@
 package com.yili.wormhole.plugins.reader.hbasereader;
 
-import com.dp.nebula.wormhole.common.interfaces.ILine;
+import com.yili.wormhole.common.interfaces.ILine;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.*;
