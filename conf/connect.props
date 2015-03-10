@@ -5,8 +5,14 @@ mysql_bdConfig.username=work
 mysql_bdConfig.dbname=bdOutput
 mysql_bdConfig.password=work
 
-gpanalysis_bi.ip=10.1.21.64
-gpanalysis_bi.port=5432
-gpanalysis_bi.dbname=dianpingdw
-gpanalysis_bi.username=bi
-gpanalysis_bi.password=bi3da93da039dbi
+mysql_dev.ip=192.168.8.44
+mysql_dev.port=3306
+mysql_dev.username=DianPingDW2
+mysql_dev.dbname=DianPingDW2
+mysql_dev.password=ertydfgh
+
+gpreport58_bi.ip=10.1.21.58
+gpreport58_bi.port=5432
+gpreport58_bi.dbname=dianpingdw
+gpreport58_bi.username=bi
+gpreport58_bi.password=bi3da93da039dbi
