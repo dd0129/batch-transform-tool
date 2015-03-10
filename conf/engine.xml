@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <engine>
-	<storageClassName>com.dp.nebula.com.yili.wormhole.engine.storage.RAMStorage</storageClassName>
+	<storageClassName>com.yili.wormhole.engine.storage.RAMStorage</storageClassName>
 	<storageLineLimit>1000</storageLineLimit>
 	<storageByteLimit>1000000</storageByteLimit>
 	<storageDistructLimit>1</storageDistructLimit>

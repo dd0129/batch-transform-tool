@@ -1,0 +1,12 @@
+[conf]
+mysql_bdConfig.ip=10.0.0.25
+mysql_bdConfig.port=3306
+mysql_bdConfig.username=work
+mysql_bdConfig.dbname=bdOutput
+mysql_bdConfig.password=work
+
+gpanalysis_bi.ip=10.1.21.64
+gpanalysis_bi.port=5432
+gpanalysis_bi.dbname=dianpingdw
+gpanalysis_bi.username=bi
+gpanalysis_bi.password=bi3da93da039dbi
