@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<job>
+  <reader>
+    <id>ttt1</id>
+    <needSplit>false</needSplit>
+    <sql>select `action`,`action_name`,`add_time`,`update_time` from acl_action_lkp</sql>
+    <encoding>UTF-8</encoding>
+    <concurrency>10</concurrency>
+    <blockSize/>
+    <connectProps>mysql_dev</connectProps>
+    <plugin>mysqlreader</plugin>
+  </reader>
+  <writer id="ttt2">
+    <plugin>mysqlwriter</plugin>
+    <connectProps>mysql_dev</connectProps>
+    <ip></ip>
+    <port></port>
+    <dbname></dbname>
+    <username></username>
+    <password></password>
+    <priority>0</priority>
+    <encoding>UTF-8</encoding>
+    <params></params>
+    <loadFile>false</loadFile>
+    <tableName>acl_action_lkp_output</tableName>
+    <columns>`action`,`action_name`,`add_time`,`update_time`</columns>
+    <pre></pre>
+    <post></post>
+    <replace>false</replace>
+    <countSql></countSql>
+    <rollback></rollback>
+    <failedlinesthreshold>0</failedlinesthreshold>
+  </writer>
+</job>

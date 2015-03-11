@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<job>
+  <reader>
+    <id>ttt1</id>
+    <needSplit>false</needSplit>
+    <sql>select `action`,`action_name`,`add_time`,`update_time` from acl_action_lkp limit 100</sql>
+    <encoding>UTF-8</encoding>
+    <concurrency>10</concurrency>
+    <blockSize/>
+    <connectProps>mysql_dev</connectProps>
+    <plugin>mysqlreader</plugin>
+  </reader>
+  <writer>
+    <plugin>rediswriter</plugin>
+    <sentinels>192.168.213.249:26381;192.168.213.250:26381</sentinels>
+    <nodes>192.168.213.249:6381,192.168.213.250:16381</nodes>
+	<name>node_1</name>
+    <table>acl_action_lkp</table>
+    <family>dim</family>
+    <keyIndex>0</keyIndex>
+    <columnsName>action_name,add_time,update_time</columnsName>
+    <serialize>0</serialize>
+    <separator>,</separator>
+    <batchSize>5</batchSize>
+    <concurrency>1</concurrency>
+    <write_sleep>true</write_sleep>
+    <wait_time>100</wait_time>
+    <num_to_wait>20000</num_to_wait>
+  </writer>
+</job>

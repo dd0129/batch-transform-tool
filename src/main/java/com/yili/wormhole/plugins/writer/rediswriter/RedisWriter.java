@@ -9,8 +9,8 @@ import com.yili.wormhole.common.interfaces.IWriter;
 import com.yili.wormhole.plugins.common.BufferJson;
 import com.yili.wormhole.plugins.common.BufferString;
 import com.yili.wormhole.plugins.common.OutputBufferInterface;
-import com.yili.wormhole.plugins.common.RedisClient;
 import com.google.common.base.Preconditions;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
@@ -38,6 +38,9 @@ public class RedisWriter extends AbstractPlugin implements IWriter {
     private int batchSize;
     private boolean clearKey;
     private int expireTime;
+    private String nodes;
+    private String sentinels;
+    private String name;
 
     private String[] columns;
 
@@ -47,6 +50,9 @@ public class RedisWriter extends AbstractPlugin implements IWriter {
 
     @Override
     public void init() {
+    	nodes =  getParam().getValue(ParamKey.nodes);
+    	sentinels =  getParam().getValue(ParamKey.sentinels);
+    	name =  getParam().getValue(ParamKey.name);
         keyIndex = getParam().getIntValue(ParamKey.keyIndex, 0);
         columnsName = getParam().getValue(ParamKey.columnsName);
         num_to_wait = getParam().getIntValue(ParamKey.num_to_wait, 10000);
@@ -73,7 +79,7 @@ public class RedisWriter extends AbstractPlugin implements IWriter {
 
     @Override
     public void connection() {
-        redisClient = new RedisClient(batchSize, table + "." + family);
+        redisClient = new RedisClient(sentinels, nodes, name, batchSize, table + "." + family);
         Preconditions.checkNotNull(redisClient);
     }
 

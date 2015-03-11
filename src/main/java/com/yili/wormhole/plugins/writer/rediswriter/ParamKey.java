@@ -2,6 +2,33 @@ package com.yili.wormhole.plugins.writer.rediswriter;
 
 public final class ParamKey {
 	/*
+     * @name: nodes
+     * @description: redis node, like "10.1.115.49:6379,10.1.110.46:6381"
+     * @range: 
+     * @mandatory: true
+     * @default: 
+     */
+	public final static String nodes = "nodes";
+	
+	/*
+     * @name: node
+     * @description: redis node, like "192.168.213.249:6381,192.168.213.250:16381"
+     * @range: 
+     * @mandatory: true
+     * @default: 
+     */
+	public final static String sentinels = "sentinels";
+	
+	/*
+     * @name: name
+     * @description: redis name, like "node_1"
+     * @range: 
+     * @mandatory: true
+     * @default: 
+     */
+	public final static String name = "name";
+	
+	/*
      * @name: table name
      * @description: redis table name
      * @range: 
